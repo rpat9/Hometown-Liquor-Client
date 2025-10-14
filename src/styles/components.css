@@ -1,0 +1,19 @@
+@layer components {
+
+    .bg-primary {
+        @apply bg-[var(--color-bg)];
+    }
+
+    .bg-secondary {
+        @apply bg-[var(--color-bg-secondary)];
+    }
+
+    .text-primary {
+        @apply text-[var(--color-text-primary)];
+    }
+
+    .button-text {
+        @apply text-[var(--btn-text-color)];
+    }
+
+}

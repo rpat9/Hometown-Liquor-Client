@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "./components.css";
+@import "./utilities.css";
+
+:root {
+  --color-primary: #B22222; /* Store logo red - keep as is */
+  --color-primary-light: #D32F2F;
+  --color-primary-dark: #8B0000;
+  --color-bg: #F9FAFB; /* Soft off-white background */
+  --color-bg-secondary: #dedfe0; /* Gentle gray for cards/sections */
+  --color-text-primary: #22223B; /* Deep blue-gray for main text */
+  --color-text-secondary: #4A5568; /* Muted blue-gray for secondary text */
+  --color-text-muted: #A0AEC0; /* Soft muted blue-gray */
+  --color-border: #E5E7EB; /* Light border */
+  --color-border-hover: #C7D2FE; /* Soft blue border on hover */
+  --color-accent: #E0E7FF; /* Light blue accent */
+  --btn-bg-color: #B22222; /* Store logo red */
+  --btn-hover-color: #A01A1A; /* Slightly darker red */
+  --btn-text-color: #FFFFFF;
+  --btn-secondary-bg: #E0E7FF; /* Light blue for secondary button */
+  --btn-secondary-hover: #C7D2FE; /* Slightly deeper blue */
+  --btn-secondary-text: #22223B; /* Deep blue-gray */
+  --card-bg: #FFFFFF;
+  --card-shadow: 0 4px 12px 0 rgba(34, 34, 59, 0.08);
+  --card-shadow-hover: 0 8px 24px 0 rgba(34, 34, 59, 0.12);
+}
+
+.dark body {
+  /* Dark mode: dark gray background with white as the primary color */
+  --color-primary: #FFFFFF; /* Primary in dark mode (white) */
+  --color-primary-light: #F3F4F6; /* Light white/gray */
+  --color-primary-dark: #E5E7EB; /* Slightly darker white/gray */
+  --color-bg: #0F1720; /* Deep dark gray/near-black background */
+  --color-bg-secondary: #232f49; /* Slightly lighter for cards */
+  --color-text-primary: #F9FAFB; /* Soft white text */
+  --color-text-secondary: #9CA3AF; /* Muted gray */
+  --color-text-muted: #6B7280; /* Muted gray */
+  --color-border: #1F2937; /* Subtle border */
+  --color-border-hover: #374151; /* Hover border */
+  --color-accent: #111827; /* Accent using card color */
+  --btn-bg-color: var(--color-primary); /* Buttons use primary (white) */
+  --btn-hover-color: #E6E7EA; /* Slight hover tint */
+  --btn-text-color: #0F1720; /* Dark text on white buttons */
+  --btn-secondary-bg: #111827; /* Secondary btn blends with card */
+  --btn-secondary-hover: #1F2937;
+  --btn-secondary-text: #F9FAFB; /* White text on dark secondary */
+  --card-bg: #111827;
+  --card-shadow: 0 6px 18px 0 rgba(2, 6, 23, 0.6);
+  --card-shadow-hover: 0 10px 30px 0 rgba(2, 6, 23, 0.7);
+}
+
+.dark .btn-primary:hover {
+  background-color: var(--btn-hover-color);
+}
+
+.dark .btn-secondary:hover {
+  background-color: var(--btn-secondary-hover);
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: 'Inter', sans-serif;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
