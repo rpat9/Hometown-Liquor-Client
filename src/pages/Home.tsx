@@ -1,4 +1,4 @@
-import { ShoppingBag, Wine, Truck, Clock, Star, MapPin, Phone, Award, Users, ArrowRight, Heart, CheckCircle, Shield } from "lucide-react";
+import { ShoppingBag, Wine, Truck, Clock, Star, MapPin, Phone, Award, Users, ArrowRight, Heart, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface HowItWorksStep {
@@ -182,7 +182,7 @@ export default function Home() {
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
                         <a
-                            href="tel:+18152345678"
+                            href="tel:+16306693023"
                             className="px-8 py-4 bg-transparent border-2 border-white/50 text-white rounded-2xl font-bold text-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-3 backdrop-blur-sm"
                         >
                             <Phone className="w-5 h-5" />
