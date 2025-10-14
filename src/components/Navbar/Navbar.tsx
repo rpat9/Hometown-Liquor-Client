@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import CallButton from "../Buttons/CallButton";
 import NavLink from "./NavLink";
+import { useAuth } from "../../hooks/useAuth";
+import { authService } from "../../services/authService";
+import { toast } from "sonner";
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,6 +16,7 @@ export default function Navbar() {
     const [highlightStyle, setHighlightStyle] = useState({ left: 0, width: 0 });
     const navContainerRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
+    const { isAuthenticated, logout } = useAuth();
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
@@ -21,6 +25,19 @@ export default function Navbar() {
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogout = async () => {
+        try {
+            await authService.logout();
+            logout();
+            toast.success("Logged out successfully");
+        } catch (error) {
+            console.error("Logout error:", error);
+            // Still logout locally even if API call fails
+            logout();
+            toast.success("Logged out successfully");
+        }
     };
 
     // Set active href based on current path
@@ -125,8 +142,17 @@ export default function Navbar() {
                         </motion.div>
                     </motion.button>
                     
-                    <CallButton text="Login" href="/login" variant="primary" />
-                    <CallButton text="Sign up" href="/signup" variant="primary" />
+                    {isAuthenticated ? (
+                        <>
+                            <CallButton text="Use me" onClick={() => toast.info("Use me button clicked!")} variant="primary" />
+                            <CallButton text="Logout" onClick={handleLogout} variant="primary" />
+                        </>
+                    ) : (
+                        <>
+                            <CallButton text="Login" href="/login" variant="primary" />
+                            <CallButton text="Sign up" href="/signup" variant="primary" />
+                        </>
+                    )}
                 </div>
 
                 <div className="flex lg:hidden items-center gap-3">
@@ -172,8 +198,17 @@ export default function Navbar() {
                             </div>
 
                             <div className="flex flex-col gap-3 pt-4 border-t border-[var(--color-border)]">
-                                <CallButton text="Login" href="/login" variant="primary" />
-                                <CallButton text="Sign up" href="/signup" variant="primary" />
+                                {isAuthenticated ? (
+                                    <>
+                                        <CallButton text="Use me" onClick={() => toast.info("Use me button clicked!")} variant="secondary" />
+                                        <CallButton text="Logout" onClick={handleLogout} variant="primary" />
+                                    </>
+                                ) : (
+                                    <>
+                                        <CallButton text="Login" href="/login" variant="primary" />
+                                        <CallButton text="Sign up" href="/signup" variant="primary" />
+                                    </>
+                                )}
                             </div>
                         </div>
                     </motion.div>
