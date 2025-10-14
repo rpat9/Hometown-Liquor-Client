@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import CallButton from "../Buttons/CallButton";
@@ -11,6 +12,7 @@ export default function Navbar() {
     const [hoveredHref, setHoveredHref] = useState<string | null>(null);
     const [highlightStyle, setHighlightStyle] = useState({ left: 0, width: 0 });
     const navContainerRef = useRef<HTMLDivElement>(null);
+    const location = useLocation();
 
     const toggleDarkMode = () => {
         setIsDarkMode(!isDarkMode);
@@ -23,8 +25,8 @@ export default function Navbar() {
 
     // Set active href based on current path
     useEffect(() => {
-        setActiveHref(window.location.pathname);
-    }, []);
+        setActiveHref(location.pathname);
+    }, [location.pathname]);
 
     // Calculate highlight position
     useEffect(() => {
@@ -69,15 +71,9 @@ export default function Navbar() {
                     <div className="w-12 h-12 rounded-lg flex items-center justify-center">
                         <img src="/apple-touch-icon.png" alt="Hometown-Liquor Logo" />
                     </div>
-                    <motion.span 
-                        className="text-xl font-bold text-primary"
-                        whileHover={{ 
-                            color: 'var(--color-primary)',
-                            transition: { duration: 0.2 }
-                        }}
-                    >
+                    <h1 className="text-primary text-xl sm:text-2xl font-bold hover:scale-104 transition-transform duration-200">
                         Hometown Liquor
-                    </motion.span>
+                    </h1>
                 </motion.a>
 
                 <div 

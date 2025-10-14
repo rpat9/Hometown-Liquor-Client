@@ -8,8 +8,24 @@
         @apply bg-[var(--color-bg-secondary)];
     }
 
+    .bg-card {
+        @apply bg-[var(--card-bg)];
+    }
+
     .text-primary {
         @apply text-[var(--color-text-primary)];
+    }
+
+    .text-heading {
+        @apply text-[var(--color-primary)];
+    }
+
+    .text-secondary {
+        @apply text-[var(--color-text-secondary)];
+    }
+
+    .text-hover-accent {
+        @apply text-[var(--color-accent)];
     }
 
     .button-text {

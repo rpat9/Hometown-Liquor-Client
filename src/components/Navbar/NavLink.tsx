@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface NavLinkProps {
     children: React.ReactNode;
@@ -9,15 +9,12 @@ interface NavLinkProps {
 
 const NavLink: React.FC<NavLinkProps> = ({ children, href = '#', onClick }) => {
     const [isActive, setIsActive] = useState(false);
+    const location = useLocation();
 
     useEffect(() => {
         // Check if the current route matches the href
-        if (window.location.pathname === href) {
-            setIsActive(true);
-        } else {
-            setIsActive(false);
-        }
-    }, [href]);
+        setIsActive(location.pathname === href);
+    }, [href, location.pathname]);
 
     return (
         <Link
