@@ -1,20 +1,50 @@
 import type { User } from "./database.types";
 
+export interface SignupRequest {
+  email: string;
+  password: string;
+  name: string;
+  phone: string;
+}
+
 export interface LoginRequest {
   email: string;
   password: string;
 }
 
-export interface SignupRequest {
-  email: string;
-  password: string;
-  name?: string;
-  phone?: string;
+export interface AuthTokens {
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
 }
 
-export interface AuthResponse {
+export interface LoginResponse {
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
   user: User;
-  token: string;
+}
+
+export interface SignupResponse {
+  id: string;
+  email: string;
+  name: string;
+  phone: string;
+  role: string;
+  email_verified: boolean;
+  low_stock_alerts: boolean;
+  new_stock_alerts: boolean;
+  restock_alerts: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ValidationError {
+  detail: Array<{
+    loc: string[];
+    msg: string;
+    type: string;
+  }>;
 }
 
 export interface ProductSearchParams {
